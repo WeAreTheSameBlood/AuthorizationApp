@@ -18,6 +18,11 @@
             </Button>
             <PasswordField fx:id="authPasswordField" layoutX="200.0" layoutY="130.0" prefHeight="40.0" prefWidth="300.0" promptText="pasword" style="-fx-border-color: silver; -fx-border-radius: 7; -fx-background-radius: 7;" />
             <TextField fx:id="authLoginTextField" layoutX="200.0" layoutY="55.0" prefHeight="40.0" prefWidth="300.0" promptText="login" style="-fx-border-color: silver; -fx-background-radius: 7; -fx-border-radius: 7;" />
+            <Label fx:id="authErrorMessage" alignment="CENTER" contentDisplay="CENTER" layoutX="225.0" layoutY="189.0" prefHeight="20.0" prefWidth="250.0" textAlignment="CENTER" textFill="#c60101">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
       <Label layoutX="208.0" layoutY="26.0" text="Autorization" textFill="WHITE" AnchorPane.topAnchor="26.0">
