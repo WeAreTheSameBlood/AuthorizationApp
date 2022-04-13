@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #2E3348;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hlybchenko.autorizationapp.SuccessfulLoginSceneController">
+    <children>
+        <AnchorPane layoutY="100.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fafafa;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+         <children>
+            <Label layoutX="140.0" layoutY="38.0" text="Successful login">
+               <font>
+                  <Font size="60.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="imageButtonAward" fitHeight="150.0" fitWidth="200.0" layoutX="275.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../assets/award.gif" />
+               </image>
+            </ImageView>
+         </children>
+        </AnchorPane>
+        <Label layoutX="208.0" layoutY="26.0" text="Autorization" textFill="WHITE" AnchorPane.topAnchor="26.0">
+            <font>
+                <Font name="Georgia Italic" size="50.0" />
+            </font>
+        </Label>
+    </children>
+</AnchorPane>

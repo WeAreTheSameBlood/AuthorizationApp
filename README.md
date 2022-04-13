@@ -1,2 +1,2 @@
-Pet-project for learning in JavaFX and MySQL.
-We want authorization and save you data in database.
+Pet-project for learning in JavaFX and MySQL. 
+You can authorize and save your data in database. 
