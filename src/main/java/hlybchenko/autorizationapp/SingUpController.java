@@ -1,6 +1,7 @@
 package hlybchenko.autorizationapp;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -42,7 +43,16 @@ public class SingUpController {
 
     @FXML
     void initialize() {
-
+        DatabaseHandler dbHandler = new DatabaseHandler();
+        singUpButton.setOnAction(actionEvent -> {
+            try {
+                dbHandler.singUpUser(singUpFirstName.getText(), singUpLastName.getText(), singUpLogin.getText(), singUpPassword.getText(), singUpLocation.getText(), "Male");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
 }
