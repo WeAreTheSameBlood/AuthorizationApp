@@ -8,6 +8,15 @@ public class User {
     private String location;
     private String gender;
 
+    public User(String firstName, String lastName, String login, String password, String location, String gender) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.login = login;
+        this.password = password;
+        this.location = location;
+        this.gender = gender;
+    }
+
     public String getFirstName() {
         return firstName;
     }

@@ -12,22 +12,22 @@ public class DatabaseHandler extends Configs{
     public Connection getDbConnection() throws ClassNotFoundException, SQLException{
         String connectionString = "jdbc:mysql://" + dbHost + ":" + dbPort + "/" + dbName;
 
-        Class.forName("com.mysql.jdbc.Driver");
+        Class.forName("com.mysql.cj.jdbc.Driver");
         dbConnection = DriverManager.getConnection(connectionString, dbUser, dbPass);
         return dbConnection;
     }
 
-    public void singUpUser(String firstName, String lastName, String userName, String password, String location, String gender) throws SQLException, ClassNotFoundException {
+    public void singUpUser(User user) throws SQLException, ClassNotFoundException {
         String insert = "INSERT INTO" + Const.USER_TABLE + "(" + Const.USERS_FIRSTNAME + ","
                 + Const.USERS_LASTNAME + "," + Const.USERS_USERNAME + "," + Const.USERS_PASSWORD
                 + "," + Const.USERS_LOCATION + "," + Const.USERS_GENDER + ")" + "VALUES(?,?,?,?,?,?)";
         PreparedStatement prSt = getDbConnection().prepareStatement(insert);
-        prSt.setString(1, firstName);
-        prSt.setString(2, lastName);
-        prSt.setString(3, userName);
-        prSt.setString(4, password);
-        prSt.setString(5, location);
-        prSt.setString(6, gender);
+        prSt.setString(1, user.getFirstName());
+        prSt.setString(2, user.getLastName());
+        prSt.setString(3, user.getLogin());
+        prSt.setString(4, user.getPassword());
+        prSt.setString(5, user.getLocation());
+        prSt.setString(6, user.getGender());
         prSt.executeUpdate();
     }
 }
