@@ -5,6 +5,8 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+
+import hlybchenko.animations.Shake;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -60,18 +62,7 @@ public class AuthorizationSceneController {
 
         singUpButton.setOnAction(actionEvent -> {
                     singUpButton.getScene().getWindow().hide();
-
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("singUp.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent parent = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(parent));
-            stage.showAndWait();
+                    scene("singUp.fxml");
         });
     }
 
@@ -87,7 +78,28 @@ public class AuthorizationSceneController {
             counter++;
         }
         if (counter >= 1) {
-            System.out.println("Success!");
+            singInButton.getScene().getWindow().hide();
+            scene("successfulLogin.fxml");
+        } else {
+            Shake authLoginAnim = new Shake(authLoginTextField);
+            Shake authPassAnim = new Shake(authPasswordField);
+            authLoginAnim.playAnim();
+            authPassAnim.playAnim();
+            authErrorMessage.setText("Error: login or/and password failed.");
         }
+    }
+
+    public void scene(String sceneFXML){
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource(sceneFXML));
+        try {
+            loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Parent parent = loader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(parent));
+        stage.showAndWait();
     }
 }

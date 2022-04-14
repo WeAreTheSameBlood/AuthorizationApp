@@ -2,7 +2,6 @@ package hlybchenko.autorizationapp;
 
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.Locale;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -45,9 +44,7 @@ public class SingUpController {
     @FXML
     void initialize() {
 
-        singUpButton.setOnAction(actionEvent -> {
-            singUpNewUser();
-        });
+        singUpButton.setOnAction(actionEvent -> singUpNewUser());
     }
 
     private void singUpNewUser() {
@@ -57,7 +54,7 @@ public class SingUpController {
         String login = singUpLogin.getText();
         String password = singUpPassword.getText();
         String location = singUpLocation.getText();
-        String gender = "";
+        String gender;
         if (singUpGenderMale.isSelected()) gender = "Male";
         else gender = "Female";
         User user = new User(firstName, lastName, login, password, location, gender);

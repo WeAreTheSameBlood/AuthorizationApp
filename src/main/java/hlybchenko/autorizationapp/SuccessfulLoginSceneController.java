@@ -17,8 +17,5 @@ public class SuccessfulLoginSceneController {
     private ImageView imageButtonAward;
 
     @FXML
-    void initialize() {
-
-    }
-
+    void initialize() {    }
 }
