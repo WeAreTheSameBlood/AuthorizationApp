@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.ResultSet;
 
 
 public class DatabaseHandler extends Configs{
@@ -29,5 +30,15 @@ public class DatabaseHandler extends Configs{
         prSt.setString(5, user.getLocation());
         prSt.setString(6, user.getGender());
         prSt.executeUpdate();
+    }
+
+    public ResultSet getUser(User user) throws SQLException, ClassNotFoundException {
+        ResultSet resultSet = null;
+        String select = "SELECT * FROM " + Const.USER_TABLE + " WHERE " + Const.USERS_USERNAME + "=? AND " + Const.USERS_PASSWORD + "=?";
+        PreparedStatement prSt = getDbConnection().prepareStatement(select);
+        prSt.setString(1, user.getLogin());
+        prSt.setString(2, user.getPassword());
+        resultSet = prSt.executeQuery();
+        return resultSet;
     }
 }

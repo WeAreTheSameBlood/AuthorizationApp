@@ -2,6 +2,8 @@ package hlybchenko.autorizationapp;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -42,7 +44,13 @@ public class AuthorizationSceneController {
             String loginText = authLoginTextField.getText().trim();
             String loginPassword = authPasswordField.getText().trim();
             if (!loginText.equals("") && !loginPassword.equals("")){
-                loginUser(loginText, loginPassword);
+                try {
+                    loginUser(loginText, loginPassword);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
             } else {
                 authErrorMessage.setText("Error: login or/and password failed.");
                 authLoginTextField.undo();
@@ -65,11 +73,21 @@ public class AuthorizationSceneController {
             stage.setScene(new Scene(parent));
             stage.showAndWait();
         });
-
     }
 
-    private void loginUser(String loginText, String loginPassword) {
+    private void loginUser(String loginText, String loginPassword) throws SQLException, ClassNotFoundException {
+        DatabaseHandler dbHandler = new DatabaseHandler();
+        User user = new User();
+        user.setLogin(loginText);
+        user.setPassword(loginPassword);
+        ResultSet result = dbHandler.getUser(user);
 
+        int counter = 0;
+        while (result.next()) {
+            counter++;
+        }
+        if (counter >= 1) {
+            System.out.println("Success!");
+        }
     }
-
 }

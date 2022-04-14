@@ -69,5 +69,4 @@ public class SingUpController {
             e.printStackTrace();
         }
     }
-
 }
