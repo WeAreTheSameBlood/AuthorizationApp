@@ -39,5 +39,10 @@
                 <Font name="Georgia Italic" size="50.0" />
             </font>
         </Label>
+      <Button fx:id="singUpButtonBack" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: silver;" text="Back" textFill="#2e3348">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

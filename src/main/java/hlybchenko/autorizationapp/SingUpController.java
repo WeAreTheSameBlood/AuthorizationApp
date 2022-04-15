@@ -1,21 +1,16 @@
 package hlybchenko.autorizationapp;
 
-import java.net.URL;
 import java.sql.SQLException;
-import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class SingUpController {
+public class SingUpController extends AuthorizationSceneController{
 
     @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
+    private Button singUpButtonBack;
 
     @FXML
     private Button singUpButton;
@@ -43,9 +38,16 @@ public class SingUpController {
 
     @FXML
     void initialize() {
-
+        singUpGenderMale.setOnAction(event -> genderTest(singUpGenderFemale, singUpGenderMale));
+        singUpGenderFemale.setOnAction(event -> genderTest(singUpGenderMale,singUpGenderFemale));
         singUpButton.setOnAction(actionEvent -> singUpNewUser());
+        singUpButtonBack.setOnAction(event -> {
+            singUpButtonBack.getScene().getWindow().hide();
+            scene("authorizationScene.fxml");
+        });
     }
+
+    private void genderTest(CheckBox cB1, CheckBox cB2) { if (cB2.isSelected()) cB1.setSelected(false); }
 
     private void singUpNewUser() {
         DatabaseHandler dbHandler = new DatabaseHandler();
@@ -60,9 +62,7 @@ public class SingUpController {
         User user = new User(firstName, lastName, login, password, location, gender);
         try {
             dbHandler.singUpUser(user);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }

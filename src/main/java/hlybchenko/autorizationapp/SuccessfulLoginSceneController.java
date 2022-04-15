@@ -1,21 +1,17 @@
 package hlybchenko.autorizationapp;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.fxml.FXML;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.Button;
 
-public class SuccessfulLoginSceneController {
+public class SuccessfulLoginSceneController extends AuthorizationSceneController {
+    @FXML
+    private Button succLoginButtonBack;
 
     @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
-    @FXML
-    private ImageView imageButtonAward;
-
-    @FXML
-    void initialize() {    }
+    void initialize() {
+        succLoginButtonBack.setOnAction(event -> {
+            succLoginButtonBack.getScene().getWindow().hide();
+            scene("authorizationScene.fxml");
+        });
+    }
 }

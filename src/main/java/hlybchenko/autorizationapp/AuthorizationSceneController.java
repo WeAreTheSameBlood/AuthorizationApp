@@ -1,11 +1,8 @@
 package hlybchenko.autorizationapp;
 
 import java.io.IOException;
-import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ResourceBundle;
-
 import hlybchenko.animations.Shake;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,12 +15,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class AuthorizationSceneController {
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
 
     @FXML
     private Label authErrorMessage;
@@ -48,13 +39,11 @@ public class AuthorizationSceneController {
             if (!loginText.equals("") && !loginPassword.equals("")){
                 try {
                     loginUser(loginText, loginPassword);
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                } catch (ClassNotFoundException e) {
+                } catch (SQLException | ClassNotFoundException e) {
                     e.printStackTrace();
                 }
             } else {
-                authErrorMessage.setText("Error: login or/and password failed.");
+                errorAndShake();
                 authLoginTextField.undo();
                 authPasswordField.undo();
             }
@@ -80,13 +69,15 @@ public class AuthorizationSceneController {
         if (counter >= 1) {
             singInButton.getScene().getWindow().hide();
             scene("successfulLogin.fxml");
-        } else {
-            Shake authLoginAnim = new Shake(authLoginTextField);
-            Shake authPassAnim = new Shake(authPasswordField);
-            authLoginAnim.playAnim();
-            authPassAnim.playAnim();
-            authErrorMessage.setText("Error: login or/and password failed.");
-        }
+        } else { errorAndShake();}
+    }
+
+    private void errorAndShake() {
+        Shake authLoginAnim = new Shake(authLoginTextField);
+        Shake authPassAnim = new Shake(authPasswordField);
+        authLoginAnim.playAnim();
+        authPassAnim.playAnim();
+        authErrorMessage.setText("Error: login or/and password failed.");
     }
 
     public void scene(String sceneFXML){
@@ -99,7 +90,8 @@ public class AuthorizationSceneController {
         }
         Parent parent = loader.getRoot();
         Stage stage = new Stage();
+        stage.setResizable(false);
         stage.setScene(new Scene(parent));
-        stage.showAndWait();
+        stage.show();
     }
 }
