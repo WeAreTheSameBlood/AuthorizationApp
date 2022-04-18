@@ -2,10 +2,7 @@ package hlybchenko.autorizationapp;
 
 import java.sql.SQLException;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 public class SingUpController extends AuthorizationSceneController{
 
@@ -37,6 +34,12 @@ public class SingUpController extends AuthorizationSceneController{
     private PasswordField singUpPassword;
 
     @FXML
+    private Label singUpPasswordError;
+
+    @FXML
+    public Label singUpGeneralError;
+
+    @FXML
     void initialize() {
         singUpGenderMale.setOnAction(event -> genderTest(singUpGenderFemale, singUpGenderMale));
         singUpGenderFemale.setOnAction(event -> genderTest(singUpGenderMale,singUpGenderFemale));
@@ -51,11 +54,13 @@ public class SingUpController extends AuthorizationSceneController{
 
     private void singUpNewUser() {
         DatabaseHandler dbHandler = new DatabaseHandler();
-        String firstName = singUpFirstName.getText();
-        String lastName = singUpLastName.getText();
-        String login = singUpLogin.getText();
-        String password = singUpPassword.getText();
-        String location = singUpLocation.getText();
+        String firstName = singUpFirstName.getText().trim();
+        String lastName = singUpLastName.getText().trim();
+        String login = singUpLogin.getText().trim();
+        String password = singUpPassword.getText().trim();
+        if (singUpPassword.getText().trim().length() < 6) singUpPasswordError.setText("weak password (minimum 6 characters)");
+        else singUpPasswordError.setText("");
+        String location = singUpLocation.getText().trim();
         String gender;
         if (singUpGenderMale.isSelected()) gender = "Male";
         else gender = "Female";
@@ -64,6 +69,11 @@ public class SingUpController extends AuthorizationSceneController{
             dbHandler.singUpUser(user);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
+        }
+        String[] userData = {firstName, lastName, login, location};
+        for (String s : userData) {
+            if (s.length() < 1) singUpGeneralError.setText("Error: all fields must be filled.");
+            else singUpGeneralError.setText("");
         }
     }
 }

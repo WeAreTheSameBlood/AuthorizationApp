@@ -12,6 +12,11 @@
     <children>
         <AnchorPane layoutY="100.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fafafa;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
             <children>
+            <Label fx:id="singUpPasswordError" alignment="CENTER" layoutX="365.0" layoutY="221.0" prefHeight="20.0" prefWidth="300.0" textFill="#ab0000">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
                 <Button fx:id="singUpButton" layoutX="290.0" layoutY="246.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #2E3348;" text="Register" textFill="WHITE">
                     <font>
                         <Font size="18.0" />
@@ -32,9 +37,14 @@
                   <Font size="15.0" />
                </font>
             </CheckBox>
+            <Label fx:id="singUpGeneralError" alignment="CENTER" layoutX="200.0" layoutY="14.0" prefHeight="20.0" prefWidth="300.0" textFill="#ab0000">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
             </children>
         </AnchorPane>
-        <Label layoutX="208.0" layoutY="26.0" text="Autorization" textFill="WHITE" AnchorPane.topAnchor="26.0">
+        <Label layoutX="208.0" layoutY="26.0" text="Authorization" textFill="WHITE" AnchorPane.topAnchor="26.0">
             <font>
                 <Font name="Georgia Italic" size="50.0" />
             </font>

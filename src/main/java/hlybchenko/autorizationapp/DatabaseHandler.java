@@ -29,7 +29,11 @@ public class DatabaseHandler extends Configs{
         prSt.setString(4, user.getPassword());
         prSt.setString(5, user.getLocation());
         prSt.setString(6, user.getGender());
-        prSt.executeUpdate();
+        if (user.getFirstName().length() >= 1 &&
+                user.getLastName().length() >= 1 &&
+                user.getLogin().length() >= 1 &&
+                user.getLocation().length() >= 1 &&
+                user.getPassword().length() >= 6) prSt.executeUpdate();
     }
 
     public ResultSet getUser(User user) throws SQLException, ClassNotFoundException {
