@@ -25,6 +25,10 @@ This is an open project and you can copy and use the code for your own purposes.
 
 Pressing the "Back" button returns you to the previous window.
 
+UPD: Added the ability to generate a password during registration.
+
+![bandicam 07](https://user-images.githubusercontent.com/91153388/164053746-6d92e404-318e-4556-88bc-59f96c1f3c8b.gif)
+
 If you enter erroneous data or leave the login and password fields empty, you will receive an error message.
 
 There are checks of fields for entering data when registering a new user (it is impossible to register without filling in all the fields and with a password shorter than 6 characters).
