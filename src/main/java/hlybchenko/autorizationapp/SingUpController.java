@@ -1,16 +1,20 @@
 package hlybchenko.autorizationapp;
 
-import java.sql.SQLException;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import java.sql.SQLException;
+import java.util.Random;
 
 public class SingUpController extends AuthorizationSceneController{
 
     @FXML
-    private Button singUpButtonBack;
+    private Button singUpButton;
 
     @FXML
-    private Button singUpButton;
+    private Button singUpButtonBack;
 
     @FXML
     private TextField singUpFirstName;
@@ -22,6 +26,12 @@ public class SingUpController extends AuthorizationSceneController{
     private CheckBox singUpGenderMale;
 
     @FXML
+    private Label singUpGeneralError;
+
+    @FXML
+    private Button singUpGeneratePassButton;
+
+    @FXML
     private TextField singUpLastName;
 
     @FXML
@@ -31,13 +41,10 @@ public class SingUpController extends AuthorizationSceneController{
     private TextField singUpLogin;
 
     @FXML
-    private PasswordField singUpPassword;
-
-    @FXML
     private Label singUpPasswordError;
 
     @FXML
-    public Label singUpGeneralError;
+    private TextField singUpPassword;
 
     @FXML
     void initialize() {
@@ -48,6 +55,7 @@ public class SingUpController extends AuthorizationSceneController{
             singUpButtonBack.getScene().getWindow().hide();
             scene("authorizationScene.fxml");
         });
+        singUpGeneratePassButton.setOnAction(event -> singUpPassword.setText(passGenerator(8)));
     }
 
     private void genderTest(CheckBox cB1, CheckBox cB2) { if (cB2.isSelected()) cB1.setSelected(false); }
@@ -75,5 +83,13 @@ public class SingUpController extends AuthorizationSceneController{
             if (s.length() < 1) singUpGeneralError.setText("Error: all fields must be filled.");
             else singUpGeneralError.setText("");
         }
+    }
+    public String passGenerator(int length){
+        Random random = new Random();
+        return random.ints(46, 122 + 1)   // leftLimit = 46 - numeral '.' rightLimit = 122 - letter 'z'
+                .filter(i -> (i <= 57 || i >= 65) && (i <= 90 || i >= 97)) //without ':', ';', '<', '=', '>', '?', '@', '[', '\', ']', '^', '_', '`' https://unicode-table.com/ru/#0060
+                .limit(length)
+                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+                .toString();
     }
 }

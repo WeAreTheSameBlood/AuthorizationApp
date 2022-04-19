@@ -7,7 +7,7 @@
     <groupId>hlybchenko</groupId>
     <artifactId>Autorization-app</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>Autorization app</name>
+    <name>Authorization app</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -60,7 +60,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>hlybchenko.autorizationapp/hlybchenko.autorizationapp.Main
+                            <mainClass>hlybchenko.authorizationapp/hlybchenko.authorizationapp.Main
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
