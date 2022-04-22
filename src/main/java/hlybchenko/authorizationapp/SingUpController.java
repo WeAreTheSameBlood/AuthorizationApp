@@ -1,4 +1,4 @@
-package hlybchenko.autorizationapp;
+package hlybchenko.authorizationapp;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -51,10 +51,7 @@ public class SingUpController extends AuthorizationSceneController{
         singUpGenderMale.setOnAction(event -> genderTest(singUpGenderFemale, singUpGenderMale));
         singUpGenderFemale.setOnAction(event -> genderTest(singUpGenderMale,singUpGenderFemale));
         singUpButton.setOnAction(actionEvent -> singUpNewUser());
-        singUpButtonBack.setOnAction(event -> {
-            singUpButtonBack.getScene().getWindow().hide();
-            scene("authorizationScene.fxml");
-        });
+        singUpButtonBack.setOnAction(event -> scene("authorizationScene.fxml", singUpButtonBack));
         singUpGeneratePassButton.setOnAction(event -> singUpPassword.setText(passGenerator(8)));
     }
 

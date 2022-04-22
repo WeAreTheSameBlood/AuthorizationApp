@@ -1,4 +1,4 @@
-package hlybchenko.autorizationapp;
+package hlybchenko.authorizationapp;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -9,9 +9,6 @@ public class SuccessfulLoginSceneController extends AuthorizationSceneController
 
     @FXML
     void initialize() {
-        succLoginButtonBack.setOnAction(event -> {
-            succLoginButtonBack.getScene().getWindow().hide();
-            scene("authorizationScene.fxml");
-        });
+        succLoginButtonBack.setOnAction(event -> scene("authorizationScene.fxml", succLoginButtonBack));
     }
 }

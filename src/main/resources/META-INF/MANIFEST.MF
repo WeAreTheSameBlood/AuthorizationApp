@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Main-Class: hlybchenko.authorizationapp.Main
+Class-Path: javafx-controls-18-ea+6.jar javafx-controls-18-ea+6-win.jar 
+ javafx-graphics-18-ea+6-win.jar javafx-fxml-18-ea+6.jar javafx-fxml-18-
+ ea+6-win.jar javafx-base-18-ea+6.jar javafx-graphics-18-ea+6.jar javafx
+ -base-18-ea+6-win.jar mysql-connector-java-8.0.28.jar
+

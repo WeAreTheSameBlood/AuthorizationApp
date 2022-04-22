@@ -1,4 +1,4 @@
-package hlybchenko.autorizationapp;
+package hlybchenko.authorizationapp;
 
 public class User {
     private String firstName;

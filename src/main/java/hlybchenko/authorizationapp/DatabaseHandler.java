@@ -1,4 +1,4 @@
-package hlybchenko.autorizationapp;
+package hlybchenko.authorizationapp;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -19,9 +19,9 @@ public class DatabaseHandler extends Configs{
     }
 
     public void singUpUser(User user) throws SQLException, ClassNotFoundException {
-        String insert = "INSERT INTO " + Const.USER_TABLE + "(" + Const.USERS_FIRSTNAME + ","
-                + Const.USERS_LASTNAME + "," + Const.USERS_USERNAME + "," + Const.USERS_PASSWORD
-                + "," + Const.USERS_LOCATION + "," + Const.USERS_GENDER + ")" + "VALUES(?,?,?,?,?,?)";
+        String insert = "INSERT INTO " + Const.USER_TABLE.getValue() + "(" + Const.USERS_FIRSTNAME.getValue() + ","
+                + Const.USERS_LASTNAME.getValue() + "," + Const.USERS_USERNAME.getValue() + "," + Const.USERS_PASSWORD.getValue()
+                + "," + Const.USERS_LOCATION.getValue() + "," + Const.USERS_GENDER.getValue() + ")" + "VALUES(?,?,?,?,?,?)";
         PreparedStatement prSt = getDbConnection().prepareStatement(insert);
         prSt.setString(1, user.getFirstName());
         prSt.setString(2, user.getLastName());
@@ -37,8 +37,8 @@ public class DatabaseHandler extends Configs{
     }
 
     public ResultSet getUser(User user) throws SQLException, ClassNotFoundException {
-        ResultSet resultSet = null;
-        String select = "SELECT * FROM " + Const.USER_TABLE + " WHERE " + Const.USERS_USERNAME + "=? AND " + Const.USERS_PASSWORD + "=?";
+        ResultSet resultSet;
+        String select = "SELECT * FROM " + Const.USER_TABLE.getValue() + " WHERE " + Const.USERS_USERNAME.getValue() + "=? AND " + Const.USERS_PASSWORD.getValue() + "=?";
         PreparedStatement prSt = getDbConnection().prepareStatement(select);
         prSt.setString(1, user.getLogin());
         prSt.setString(2, user.getPassword());

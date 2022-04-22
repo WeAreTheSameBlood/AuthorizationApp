@@ -5,6 +5,6 @@ module hlybchenko.autorizationapp {
     requires mysql.connector.java;
 
 
-    opens hlybchenko.autorizationapp to javafx.fxml;
-    exports hlybchenko.autorizationapp;
+    opens hlybchenko.authorizationapp to javafx.fxml;
+    exports hlybchenko.authorizationapp;
 }

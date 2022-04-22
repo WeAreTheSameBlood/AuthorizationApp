@@ -1,4 +1,4 @@
-package hlybchenko.autorizationapp;
+package hlybchenko.authorizationapp;
 
 public class Configs {
     protected String dbHost = "localhost";

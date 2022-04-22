@@ -1,4 +1,4 @@
-package hlybchenko.autorizationapp;
+package hlybchenko.authorizationapp;
 
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -49,10 +49,7 @@ public class AuthorizationSceneController {
             }
         });
 
-        singUpButton.setOnAction(actionEvent -> {
-                    singUpButton.getScene().getWindow().hide();
-                    scene("singUp.fxml");
-        });
+        singUpButton.setOnAction(actionEvent -> scene("singUp.fxml", singUpButton));
     }
 
     private void loginUser(String loginText, String loginPassword) throws SQLException, ClassNotFoundException {
@@ -66,10 +63,8 @@ public class AuthorizationSceneController {
         while (result.next()) {
             counter++;
         }
-        if (counter >= 1) {
-            singInButton.getScene().getWindow().hide();
-            scene("successfulLogin.fxml");
-        } else { errorAndShake();}
+        if (counter >= 1) scene("successfulLogin.fxml", singInButton);
+        else  errorAndShake();
     }
 
     private void errorAndShake() {
@@ -80,7 +75,7 @@ public class AuthorizationSceneController {
         authErrorMessage.setText("Error: login or/and password failed.");
     }
 
-    public void scene(String sceneFXML){
+    public void scene(String sceneFXML, Button button){
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(sceneFXML));
         try {
@@ -93,5 +88,6 @@ public class AuthorizationSceneController {
         stage.setResizable(false);
         stage.setScene(new Scene(parent));
         stage.show();
+        button.getScene().getWindow().hide();
     }
 }

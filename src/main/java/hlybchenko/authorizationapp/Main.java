@@ -1,4 +1,4 @@
-package hlybchenko.autorizationapp;
+package hlybchenko.authorizationapp;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
